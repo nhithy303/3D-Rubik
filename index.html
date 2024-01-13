@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rubik</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn-icons-png.flaticon.com/512/522/522103.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script id="vertex-shader" type="x-shader/x-vertex">
+      attribute vec4 vPosition;
+      attribute vec4 vColor;
+      varying vec4 fColor;
+
+      uniform mat4 projectionMatrix;
+      uniform mat4 modelViewMatrix;
+
+      void main() {
+          fColor = vColor;
+          gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+      }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+      precision mediump float;
+
+      varying vec4 fColor;
+
+      void main () {
+        gl_FragColor = fColor;
+      }
+    </script>
+    <script type="text/javascript" src="utils/matrix-vector.js"></script>
+    <script type="text/javascript" src="utils/webgl.js"></script>
+    <script type="text/javascript" src="utils/shaders.js"></script>
+    <script type="text/javascript" src="global.js"></script>
+    <script type="text/javascript" src="rotate.js"></script>
+    <script type="text/javascript" src="events.js"></script>
+    <script type="text/javascript" src="inputs.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div id="rubik">
+        <canvas id="rubik-canvas"></canvas>
+        <div class="result">
+          <h3>Cube status: <break id="status"></break></h3>
+        </div>
+      </div>
+      <div id="instruction">
+        <h1>Set up</h1>
+        <div style="text-align: center">
+          <input id="random-count" placeholder="1 - 500" />
+          <button id="randomize">Scramble</button>
+          <button id="reset">Reset</button>
+          <p style="margin-left: 30px; font-style: italic">
+            (Enter a postive integer as a number of moves to scramble the cube)
+          </p>
+        </div>
+        <h1>How to Play</h1>
+        <ul>
+          <li style="padding-bottom: 10px">
+            Drag the cube or use the arrow keys to change the camera view.
+          </li>
+          <li>Rotate each face using one of the two options below.</li>
+        </ul>
+        <p style="margin-left: 40px; font-style: italic">
+          (normal: clockwise; holding 'SPACEBAR': counterclockwise)
+        </p>
+        <h2>1/ Mouse click:</h2>
+        <div class="move-btn-container">
+          <div class="move-btn-group">
+            <button id="1">Left</button>
+            <button id="2">Middle</button>
+            <button id="3">Right</button>
+          </div>
+          <br />
+          <div class="move-btn-group">
+            <button id="4">Up</button>
+            <button id="5">Equator</button>
+            <button id="6">Down</button>
+          </div>
+          <br />
+          <div class="move-btn-group">
+            <button id="7">Front</button>
+            <button id="8">Side</button>
+            <button id="9">Back</button>
+          </div>
+        </div>
+        <h2>2/ Keyboard:</h2>
+        <div class="keyboard-container">
+          <div>
+            <p>Q: Left</p>
+            <p>W: Middle</p>
+            <p>E: Right</p>
+          </div>
+          <div>
+            <p>A: Up</p>
+            <p>S: Equator</p>
+            <p>D: Down</p>
+          </div>
+          <div>
+            <p>Z: Front</p>
+            <p>X: Side</p>
+            <p>C: Back</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

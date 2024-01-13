@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#rubik {
+  width: 50%;
+  text-align: center;
+  position: relative;
+}
+
+.result {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f082ac;
+}
+
+#instruction {
+  width: 50%;
+  padding: 10px;
+}
+h1,
+h2,
+h3 {
+  margin-bottom: 5px;
+}
+h1 {
+  font-size: 26px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+button {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background-color: #4299e1;
+  border-radius: 20px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #68ade5;
+}
+
+input {
+  width: 100px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.move-btn-container {
+  width: 100%;
+  text-align: center;
+}
+
+.move-btn-group button {
+  width: 80px;
+  float: center;
+  background-color: #ea4c89;
+}
+
+.move-btn-group button:hover {
+  background-color: #f082ac;
+}
+
+.keyboard-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.keyboard-container div {
+  flex-grow: 1;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  #rubik,
+  #instruction {
+    width: 100%;
+  }
+}
